@@ -2,8 +2,6 @@
 
 This repository documents and automates an AWS Landing Zone using AWS Control Tower, AWS Organizations, IAM Identity Center, SCPs, CloudTrail, AWS Config, cross-account IAM roles, networking foundation, and AFT-style account vending.
 
-# test
-
 ## Current Lab Accounts
 
 | Account Name             | Account ID   | OU             | Purpose                          |
@@ -17,12 +15,53 @@ This repository documents and automates an AWS Landing Zone using AWS Control To
 
 ## Current OU Design
 
+```text
 Root
 |-- Security
 |-- DEV
 |-- Sandbox
 |-- Infrastructure
 `-- Management account
+```
+
+## Terraform Environments
+
+| Environment | Purpose | Expected AWS Account |
+| --- | --- | --- |
+| `environments/management` | AWS Organizations, OUs, SCPs, protected lab account inventory | `039612843833` |
+| `environments/sandbox` | Resources inside the sandbox account | `961828155967` |
+
+Before planning, verify the active account:
+
+```bash
+aws sts get-caller-identity
+```
+
+For management changes:
+
+```bash
+cd environments/management
+export AWS_PROFILE=AWSAdministratorAccess-039612843833
+terraform validate
+terraform plan
+```
+
+For sandbox changes:
+
+```bash
+cd environments/sandbox
+export AWS_PROFILE=AWSAdministratorAccess-961828155967
+terraform validate
+terraform plan
+```
+
+## Safety Notes
+
+- Existing lab-created AWS accounts are protected with Terraform `prevent_destroy`.
+- Do not change the email address on an existing `aws_organizations_account`; AWS treats that as a replacement.
+- Prefer AWS Control Tower Account Factory or AFT for future production account vending.
+- Register new OUs/accounts in Control Tower before treating them as governed production resources.
+- See `docs/industry-readiness.md` for the current hardening path.
 
 ## Completed Practicals
 
