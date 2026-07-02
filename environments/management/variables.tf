@@ -4,6 +4,12 @@ variable "home_region" {
   default     = "ap-south-1"
 }
 
+variable "management_account_id" {
+  description = "AWS Organizations management account ID where SCPs are managed"
+  type        = string
+  default     = "039612843833"
+}
+
 variable "sandbox_ou_id" {
   description = "Sandbox OU ID"
   type        = string

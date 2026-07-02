@@ -12,3 +12,10 @@ module "attach_deny_ec2_outside_mumbai_to_sandbox" {
   policy_id = module.deny_ec2_outside_mumbai_scp.policy_id
   target_id = var.sandbox_ou_id
 }
+#===================================
+data "aws_organizations_organization" "current" {}
+
+resource "aws_organizations_organizational_unit" "new_ou" {
+  name      = "TestOU"
+  parent_id = data.aws_organizations_organization.current.roots[0].id
+}
