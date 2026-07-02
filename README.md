@@ -16,11 +16,11 @@ This repository documents and automates an AWS Landing Zone using AWS Control To
 ## Current OU Design
 
 Root
-├── Security
-├── DEV
-├── Sandbox
-├── Infrastructure
-└── Management account
+|-- Security
+|-- DEV
+|-- Sandbox
+|-- Infrastructure
+`-- Management account
 
 ## Completed Practicals
 
