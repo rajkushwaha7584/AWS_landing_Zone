@@ -1,0 +1,44 @@
+name: Terraform CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - feature
+  push:
+    branches:
+      - main
+      - feature
+  workflow_dispatch:
+
+jobs:
+  terraform-checks:
+    name: Terraform checks
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        environment:
+          - environments/management
+          - environments/sandbox
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5
+
+      - name: Check Terraform formatting
+        run: terraform fmt -recursive -check
+
+      - name: Initialize Terraform without backend
+        working-directory: ${{ matrix.environment }}
+        run: terraform init -backend=false
+
+      - name: Validate Terraform
+        working-directory: ${{ matrix.environment }}
+        run: terraform validate
