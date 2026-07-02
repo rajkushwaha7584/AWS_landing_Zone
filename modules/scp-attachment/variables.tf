@@ -1,3 +1,8 @@
+# Purpose: Define inputs for the SCP attachment module.
+# Use: Accepts the SCP policy ID and the Organizations target ID.
+# Why: Validation catches bad IDs before Terraform reaches AWS APIs.
+# Where: Consumed by modules/scp-attachment/main.tf.
+#
 variable "policy_id" {
   description = "SCP policy ID"
   type        = string

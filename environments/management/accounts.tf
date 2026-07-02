@@ -1,3 +1,8 @@
+# Purpose: Manage AWS member accounts that are tracked by the management environment.
+# Use: Keep lab-created accounts under the TestOU and protect them from accidental deletion.
+# Why: AWS account deletion/removal is sensitive, and changing account email can force replacement.
+# Where: Run from environments/management with the management account profile.
+#
 # Purpose:
 # Manage AWS Organizations member accounts that already exist in this lab OU.
 #

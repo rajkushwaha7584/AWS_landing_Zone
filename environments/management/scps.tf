@@ -1,3 +1,8 @@
+# Purpose: Create and attach AWS Organizations Service Control Policies.
+# Use: Applies governance guardrails to Sandbox OU.
+# Why: SCPs define maximum allowed permissions and protect audit/security controls.
+# Where: Run from environments/management; policies are stored in policies/scp.
+#
 # Purpose:
 # Create and attach Service Control Policies from the management account.
 #

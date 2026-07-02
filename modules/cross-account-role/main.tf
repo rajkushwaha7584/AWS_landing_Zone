@@ -1,3 +1,8 @@
+# Purpose: Create a reusable cross-account IAM role.
+# Use: Allows one AWS account to assume a role in another account.
+# Why: Cross-account role access is safer than creating IAM users in every account.
+# Where: Used by environments/sandbox to let the network account read EC2 metadata.
+#
 resource "aws_iam_role" "this" {
   name                 = var.role_name
   description          = var.description

@@ -1,3 +1,8 @@
+# Purpose: Define inputs for the cross-account role module.
+# Use: Controls role name, trusted source account, policies, tags, and session settings.
+# Why: Input validation and optional external ID make role creation safer and reusable.
+# Where: Consumed by modules/cross-account-role/main.tf.
+#
 variable "role_name" {
   description = "IAM role name"
   type        = string
