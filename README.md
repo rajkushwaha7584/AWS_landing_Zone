@@ -2,16 +2,18 @@
 
 This repository documents and automates an AWS Landing Zone using AWS Control Tower, AWS Organizations, IAM Identity Center, SCPs, CloudTrail, AWS Config, cross-account IAM roles, networking foundation, and AFT-style account vending.
 
+# test
+
 ## Current Lab Accounts
 
-| Account Name | Account ID | OU | Purpose |
-|---|---|---|---|
-| abhaysahucse | 039612843833 | Root | Management account |
-| Aggregator account | 889947797924 | Security | AWS Config Aggregator |
-| CloudTrail administrator | 238480774313 | Security | Central CloudTrail / Log Archive |
-| dev-sandbox | 855012563791 | DEV | Dev workload |
-| sandbox-account | 961828155967 | Sandbox | SCP and testing |
-| network-account | 602506755932 | Infrastructure | Central networking |
+| Account Name             | Account ID   | OU             | Purpose                          |
+| ------------------------ | ------------ | -------------- | -------------------------------- |
+| abhaysahucse             | 039612843833 | Root           | Management account               |
+| Aggregator account       | 889947797924 | Security       | AWS Config Aggregator            |
+| CloudTrail administrator | 238480774313 | Security       | Central CloudTrail / Log Archive |
+| dev-sandbox              | 855012563791 | DEV            | Dev workload                     |
+| sandbox-account          | 961828155967 | Sandbox        | SCP and testing                  |
+| network-account          | 602506755932 | Infrastructure | Central networking               |
 
 ## Current OU Design
 
