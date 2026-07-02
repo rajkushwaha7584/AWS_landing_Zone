@@ -31,6 +31,12 @@ Root
 | `environments/management` | AWS Organizations, OUs, SCPs, protected lab account inventory | `039612843833` |
 | `environments/sandbox` | Resources inside the sandbox account | `961828155967` |
 
+For a complete folder-by-folder explanation, see:
+
+```text
+docs/project-structure.md
+```
+
 Before planning, verify the active account:
 
 ```bash
