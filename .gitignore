@@ -6,6 +6,9 @@ crash.log
 crash.*.log
 *.tfvars
 *.tfvars.json
+.env
+.env.*
+*.local
 
 # OS / Editor
 .DS_Store

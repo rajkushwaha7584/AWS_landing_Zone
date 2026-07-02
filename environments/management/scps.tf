@@ -20,3 +20,22 @@ module "attach_deny_ec2_outside_mumbai_to_sandbox" {
   policy_id = module.deny_ec2_outside_mumbai_scp.policy_id
   target_id = var.sandbox_ou_id
 }
+
+# Baseline governance guardrails for the Sandbox OU.
+# These controls reduce accidental or malicious disabling of audit/security
+# services without enabling paid services by themselves.
+module "sandbox_security_baseline_scp" {
+  source = "../../modules/scp-policy"
+
+  name           = "Sandbox-Security-Baseline"
+  description    = "Baseline guardrails for sandbox accounts"
+  policy_content = file("${path.module}/../../policies/scp/sandbox-security-baseline.json")
+}
+
+# Attach baseline guardrails only to Sandbox OU to keep the blast radius small.
+module "attach_sandbox_security_baseline_to_sandbox" {
+  source = "../../modules/scp-attachment"
+
+  policy_id = module.sandbox_security_baseline_scp.policy_id
+  target_id = var.sandbox_ou_id
+}
