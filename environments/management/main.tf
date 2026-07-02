@@ -20,6 +20,13 @@ resource "aws_organizations_organizational_unit" "new_ou" {
   parent_id = data.aws_organizations_organization.current.roots[0].id
 }
 
+resource "aws_organizations_account" "test_ou_account1" {
+  name      = "test-ou-account1"
+  email     = "raj24kush@email.com"
+  role_name = "OrganizationAccountAccessRole"
+
+  parent_id = aws_organizations_organizational_unit.new_ou.id
+}
 resource "aws_organizations_account" "test_ou_account" {
   name      = "test-ou-account"
   email     = "your-unique-email@example.com"
