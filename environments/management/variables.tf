@@ -1,9 +1,11 @@
+# Region where Control Tower and Organizations operations are managed for this lab.
 variable "home_region" {
   description = "AWS Control Tower home region"
   type        = string
   default     = "ap-south-1"
 }
 
+# Expected management account. The provider uses this to block wrong-profile plans.
 variable "management_account_id" {
   description = "AWS Organizations management account ID where SCPs are managed"
   type        = string
@@ -15,6 +17,7 @@ variable "management_account_id" {
   }
 }
 
+# Existing Sandbox OU where the EC2 region-deny SCP is attached.
 variable "sandbox_ou_id" {
   description = "Sandbox OU ID"
   type        = string
@@ -26,12 +29,15 @@ variable "sandbox_ou_id" {
   }
 }
 
+# Name of the lab OU created under the organization root.
 variable "test_ou_name" {
   description = "Name for the lab OU managed in this environment"
   type        = string
   default     = "TestOU"
 }
 
+# Existing account already tracked by Terraform state. Avoid changing these
+# values because account email/name updates may force replacement.
 variable "legacy_test_ou_account_name" {
   description = "Name of the existing lab account already managed by Terraform state"
   type        = string
@@ -49,6 +55,8 @@ variable "legacy_test_ou_account_email" {
   }
 }
 
+# Second lab account tracked by Terraform state. Add new accounts as new
+# aws_organizations_account resources instead of editing this one.
 variable "test_ou_account1_name" {
   description = "Name of the second lab account in TestOU"
   type        = string

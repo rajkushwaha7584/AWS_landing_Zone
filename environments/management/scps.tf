@@ -1,3 +1,8 @@
+# Purpose:
+# Create and attach Service Control Policies from the management account.
+#
+# SCPs are organization guardrails. They do not grant permissions; they only set
+# the maximum permissions available to accounts/OUs.
 module "deny_ec2_outside_mumbai_scp" {
   source = "../../modules/scp-policy"
 
@@ -6,6 +11,9 @@ module "deny_ec2_outside_mumbai_scp" {
   policy_content = file("${path.module}/../../policies/scp/deny-ec2-outside-mumbai.json")
 }
 
+# Attaches the Mumbai-only EC2 deny policy to the existing Sandbox OU.
+# Change target_id only when intentionally moving this guardrail to another OU
+# or account.
 module "attach_deny_ec2_outside_mumbai_to_sandbox" {
   source = "../../modules/scp-attachment"
 

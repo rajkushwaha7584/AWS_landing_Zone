@@ -1,3 +1,5 @@
+# Outputs expose important IDs after apply so verification is easier from CLI,
+# docs, and future Terraform states.
 output "organization_root_id" {
   description = "AWS Organizations root ID"
   value       = data.aws_organizations_organization.current.roots[0].id
