@@ -1,3 +1,8 @@
+# Purpose: Print useful IDs after Terraform apply.
+# Use: Helps verify the organization root, TestOU, and protected account IDs.
+# Why: Outputs make demos, troubleshooting, and future integrations easier.
+# Where: Run `terraform output` from environments/management.
+#
 # Outputs expose important IDs after apply so verification is easier from CLI,
 # docs, and future Terraform states.
 output "organization_root_id" {

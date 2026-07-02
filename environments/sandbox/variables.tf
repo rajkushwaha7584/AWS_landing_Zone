@@ -1,3 +1,8 @@
+# Purpose: Define inputs for the sandbox Terraform environment.
+# Use: Stores sandbox account ID, network source account ID, and region.
+# Why: Validation prevents wrong account IDs and supports safer demos.
+# Where: Used by provider.tf and main.tf in environments/sandbox.
+#
 # Region used for sandbox resources.
 variable "home_region" {
   description = "AWS region"

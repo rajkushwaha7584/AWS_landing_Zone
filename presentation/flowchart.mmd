@@ -1,0 +1,23 @@
+flowchart TD
+    User[User / Admin] --> Portal[AWS Access Portal]
+    Portal --> Management[Management Account]
+    Portal --> Sandbox[Sandbox Account]
+    Portal --> Network[Network Account]
+
+    Management --> Organizations[AWS Organizations]
+    Organizations --> OUs[Organizational Units]
+    Organizations --> SCPs[Service Control Policies]
+
+    SCPs --> SandboxOU[Sandbox OU]
+    SandboxOU --> Sandbox
+
+    Network --> AssumeRole[STS AssumeRole]
+    AssumeRole --> SandboxRole[SandboxEC2ReadOnlyRole]
+    SandboxRole --> EC2ReadOnly[EC2 Read-Only Access]
+
+    Repo[GitHub Repository] --> Actions[GitHub Actions Terraform CI]
+    Actions --> ValidateMgmt[Validate Management]
+    Actions --> ValidateSandbox[Validate Sandbox]
+
+    Terraform[Terraform Code] --> Management
+    Terraform --> Sandbox

@@ -1,3 +1,8 @@
+# Purpose: Define resources that live inside the sandbox AWS account.
+# Use: Creates the cross-account EC2 read-only role for network-account testing.
+# Why: Demonstrates secure multi-account access through IAM AssumeRole.
+# Where: Run from environments/sandbox with sandbox-account credentials.
+#
 # Purpose:
 # Create resources inside the sandbox AWS account.
 #

@@ -1,3 +1,8 @@
+# Purpose: Define inputs for the management Terraform environment.
+# Use: Stores account IDs, OU IDs, lab account metadata, and validation rules.
+# Why: Variables make values easy to review and prevent invalid IDs/emails.
+# Where: Used by all .tf files in environments/management.
+#
 # Region where Control Tower and Organizations operations are managed for this lab.
 variable "home_region" {
   description = "AWS Control Tower home region"

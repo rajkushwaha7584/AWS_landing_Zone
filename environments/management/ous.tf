@@ -1,3 +1,8 @@
+# Purpose: Manage AWS Organizations OUs from Terraform.
+# Use: Creates the lab TestOU under the organization root.
+# Why: OUs group accounts for governance, SCP attachment, and Control Tower structure.
+# Where: Run from environments/management with the management account profile.
+#
 # Purpose:
 # Create and protect the lab OU under the AWS Organizations root.
 #
